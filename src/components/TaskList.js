@@ -2,7 +2,7 @@ import React from "react";
 import TaskItem from "./TaskItem";
 
 export default function TaskList(props) {
-  return (
+  return props.tasks.length > 0 ? (
     <div className="p-2 bd-highlight">
       <table className="table table-striped table-sm table-dark">
         <thead>
@@ -28,5 +28,7 @@ export default function TaskList(props) {
         </tbody>
       </table>
     </div>
+  ) : (
+    <div></div>
   );
 }

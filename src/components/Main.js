@@ -2,16 +2,11 @@ import React, { useState } from "react";
 import CreateTask from "./CreateTask";
 import TaskList from "./TaskList";
 
-let taskList = [
-  {
-    taskText: "Read a book",
-    isCompleted: false,
-  },
-  {
-    taskText: "Go for walk",
-    isCompleted: false,
-  },
-];
+let initialStateOfTasks = [];
+
+let taskList = localStorage.getItem("taskList")
+  ? JSON.parse(localStorage.getItem("taskList"))
+  : initialStateOfTasks;
 
 export default function Main() {
   const [tasks, setTasks] = useState(taskList);
@@ -25,6 +20,7 @@ export default function Main() {
     taskList = [...tasks];
     taskList.push({ taskText: newTaskText, isCompleted: false });
     setTasks(taskList);
+    localStorage.setItem("taskList", JSON.stringify(taskList));
   };
 
   // delete task
@@ -32,6 +28,7 @@ export default function Main() {
     taskList = [...tasks];
     taskList.splice(taskIndex, 1);
     setTasks(taskList);
+    localStorage.setItem("taskList", JSON.stringify(taskList));
   };
 
   // save/update task
@@ -44,6 +41,7 @@ export default function Main() {
     let taskToUpdate = taskList[taskIndex];
     taskToUpdate.taskText = newTaskText;
     setTasks(taskList);
+    localStorage.setItem("taskList", JSON.stringify(taskList));
   };
 
   const handleToggleTaskState = (taskIndex, isCompleteState) => {
@@ -51,6 +49,12 @@ export default function Main() {
     let taskToUpdate = taskList[taskIndex];
     taskToUpdate.isCompleted = isCompleteState;
     setTasks(taskList);
+    localStorage.setItem("taskList", JSON.stringify(taskList));
+  };
+
+  const clearLocalStorage = () => {
+    setTasks(initialStateOfTasks);
+    localStorage.removeItem("taskList");
   };
 
   return (
@@ -67,7 +71,19 @@ export default function Main() {
           handleToggleTaskState={handleToggleTaskState}
         />
       </article>
-      <footer className="footer"></footer>
+      <footer className="footer">
+        {tasks.length > 0 ? (
+          <button
+            type="submit"
+            className="btn btn-danger btn-sm mb-2 mr-sm-2"
+            onClick={clearLocalStorage}
+          >
+            <span className="bi bi-x-square"> Clear All</span>
+          </button>
+        ) : (
+          <div></div>
+        )}
+      </footer>
     </div>
   );
 }

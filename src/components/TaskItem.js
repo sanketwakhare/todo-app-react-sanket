@@ -68,13 +68,13 @@ function TaskItem(props) {
               className="btn btn-success btn-sm mb-2 mr-sm-2"
               onClick={handleSaveTask}
             >
-              <span className="bi bi-check2">Save</span>
+              <span className="bi bi-check2"> Save</span>
             </button>
             <button
               className="btn btn-secondary btn-sm mb-2 mr-sm-2"
               onClick={handleCancelTask}
             >
-              <span className="bi bi-x">Cancel</span>
+              <span className="bi bi-x"> Cancel</span>
             </button>
           </td>
         </tr>
@@ -107,13 +107,13 @@ function TaskItem(props) {
               className="btn btn-info btn-sm mb-2 mr-sm-2"
               onClick={handleEditTask}
             >
-              <span className="bi bi-pencil-square">Edit</span>
+              <span className="bi bi-pencil-square"> Edit</span>
             </button>
             <button
               className="btn btn-danger btn-sm mb-2 mr-sm-2"
               onClick={handleDeleteTask}
             >
-              <span className="bi bi-trash">Delete</span>
+              <span className="bi bi-trash"> Delete</span>
             </button>
           </td>
         </tr>

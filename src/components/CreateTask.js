@@ -32,7 +32,7 @@ export default function CreateTask(props) {
           autoComplete="off"
         ></input>
         <button type="submit" className="btn btn-success btn-sm mb-2 mr-sm-2">
-          <span className="bi bi-plus-circle">Add</span>
+          <span className="bi bi-plus-circle"> Add</span>
         </button>
       </form>
     </div>
